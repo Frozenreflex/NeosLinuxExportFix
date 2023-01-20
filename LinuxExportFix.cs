@@ -14,7 +14,7 @@ namespace NeosLinuxExportFix;
 
 public class LinuxExportFix : NeosMod
 {
-    public static readonly SemaphoreSlim ScreenshotSemaphore = new SemaphoreSlim(1, 1);
+    public static readonly SemaphoreSlim ScreenshotSemaphore = new(1, 1);
     private static LinuxPlatformConnector _connector;
     private static FieldInfo _field;
     public override string Name => "LinuxExportFix";
@@ -42,7 +42,10 @@ public class LinuxExportFix : NeosMod
 public class PlatformInterfacePatch
 {
     //all methods here are copied from the windows platform connector and modified to work as a mod
-    //patching the linux connector seems to cause mono crashes so i'm patching the platform interface itself
+    //there are no other modifications to the methods, if the neos developers copied the windows
+    //connector code into the linux connector it'd work completely fine and i dont know why they didn't
+    
+    //patching the linux connector seems to cause mono crashes so i'm patching the platform interface instead
     [HarmonyPrefix]
     [HarmonyPatch("NotifyOfFile")]
     public static bool NotifyOfFile(string file, string name)
