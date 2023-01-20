@@ -1,5 +1,5 @@
 # NeosLinuxExportFix
-Fixes exporting files not working on the Linux Native build of NeosVR
+Fixes exporting files not working on the Linux Native build of NeosVR. On my machine, screenshots end up in ``$HOME/Pictures/Neos VR``, and other files go in ``$HOME/Neos VR``.
 
 ## For Neos Developers
 ```cs
